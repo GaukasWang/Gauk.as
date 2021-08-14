@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -32,5 +33,5 @@ func main() {
 			c.Redirect(302, REDIRECT_UNRECOGNIZED_REQUEST_TO)
 		}
 	})
-	router.Run(":7000")
+	router.Run(fmt.Sprintf(":%d", PORT_TO_USE))
 }
