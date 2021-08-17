@@ -27,10 +27,12 @@ func main() {
 	router.GET("/:name", func(c *gin.Context) {
 		name := strings.ToLower(c.Param("name"))
 
-		if url, ok := urlMap[name]; ok {
-			c.Redirect(301, url)
+		if redirectUrl, ok := urlRedirectMap[name]; ok {
+			c.Redirect(http.StatusMovedPermanently, redirectUrl)
+		} else if responseTxt, ok := urlTextMap[name]; ok {
+			c.String(http.StatusOK, responseTxt)
 		} else {
-			c.Redirect(302, REDIRECT_UNRECOGNIZED_REQUEST_TO)
+			c.Redirect(http.StatusFound, REDIRECT_UNRECOGNIZED_REQUEST_TO)
 		}
 	})
 	router.Run(fmt.Sprintf(":%d", PORT_TO_USE))
