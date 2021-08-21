@@ -8,6 +8,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func loadIndex(c *gin.Context) {
+	// Alpha test: hardcode behaviour
+	c.Redirect(http.StatusFound, REDIRECT_UNRECOGNIZED_REQUEST_TO)
+}
+
 func main() {
 	router := gin.Default()
 
@@ -27,12 +32,12 @@ func main() {
 	router.GET("/:name", func(c *gin.Context) {
 		name := strings.ToLower(c.Param("name"))
 
-		if redirectUrl, ok := urlRedirectMap[name]; ok {
+		if redirectUrl, ok := Redirect(name); ok {
 			c.Redirect(http.StatusMovedPermanently, redirectUrl)
-		} else if responseTxt, ok := urlTextMap[name]; ok {
+		} else if responseTxt, ok := LoadTXTFile(name); ok {
 			c.String(http.StatusOK, responseTxt)
 		} else {
-			c.Redirect(http.StatusFound, REDIRECT_UNRECOGNIZED_REQUEST_TO)
+			loadIndex(c)
 		}
 	})
 	router.Run(fmt.Sprintf(":%d", PORT_TO_USE))

@@ -2,12 +2,18 @@ package main
 
 var (
 	urlRedirectMap = map[string]string{
-		"cv":          "https://gaukas.wang/latest/cv.pdf",
-		"resume":      "https://gaukas.wang/latest/resume.pdf",
-		"linkedin":    "https://www.linkedin.com/in/gaukaswang/",
-		"github":      "https://github.com/Gaukas",
-		"email":       "mailto:i@gaukas.wang",
-		"keybase":     "https://keybase.io/gaukas",
+		// Online Identity
+		"github":   "https://github.com/Gaukas",
+		"email":    "mailto:i@gaukas.wang",
+		"keybase":  "https://keybase.io/gaukas",
+		"telegram": "https://t.me/GaukasWang",
+
+		// Career
+		"cv":       "https://gaukas.wang/latest/cv.pdf",
+		"resume":   "https://gaukas.wang/latest/resume.pdf",
+		"linkedin": "https://www.linkedin.com/in/gaukaswang/",
+
+		// Keys
 		"gpg":         "https://gauk.as/pgp",
 		"keys":        "https://gauk.as/ssh",
 		"ssh-ed25519": "https://gauk.as/ssh",
@@ -15,20 +21,9 @@ var (
 		"ssh-keys":    "https://gauk.as/ssh",
 	}
 
-	urlTextMap = map[string]string{
-		"pgp": `-----BEGIN PGP PUBLIC KEY BLOCK-----
-mDMEYPnkJxYJKwYBBAHaRw8BAQdASvBFKl2sfl9wuMWKlRFNwZpAEhpbL70JB9N1
-8YTANI20G0dhdWthcyBXYW5nIDxpQGdhdWthcy53YW5nPoiWBBMWCAA+FiEE0Rxe
-+jJU5+M/ilnUktinbec9oA8FAmD55CcCGyMFCQPCNPkFCwkIBwIGFQoJCAsCBBYC
-AwECHgECF4AACgkQktinbec9oA+cHAD+Lxf3yguW/TVgYeXVa0mqhTVNPhvmZJWw
-7++SHf56YkMBAP5U9a7eXvqbxOJLLjfa5heS74EmN8TMVgmHxm4YTecEuDgEYPnk
-JxIKKwYBBAGXVQEFAQEHQME5/4UBKXmOWVVfN7/hXaSa7LyZkPHi+kfQSOK33VYc
-AwEIB4h+BBgWCAAmFiEE0Rxe+jJU5+M/ilnUktinbec9oA8FAmD55CcCGwwFCQPC
-NPkACgkQktinbec9oA+G7wD/bZZi/P8eONJjc3VNUVgOeWuf9JmDWuHHW99G6eAd
-ZfMBAPQRD8jLVz2DF2JyqSSxZl911HpTX2rqCB6ZoFl+oWsJ
-=Yvvs
------END PGP PUBLIC KEY BLOCK-----
-		`,
-		"ssh": `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIECqLe7H6DOvYqB7AiINtID7OFmrGIi6sNzILrEcqLtX`,
+	// All paths are relative to res folder. e.g. public-keys/ssh.key matches <repository>/res/public-keys/ssh.key
+	urlFilepathMap = map[string]string{
+		"pgp": `public-keys/gaukas-pgp-i_at_gaukasdotwang.key`,
+		"ssh": `public-keys/gaukas-ssh-ed25519.key`,
 	}
 )
