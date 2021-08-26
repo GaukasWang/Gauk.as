@@ -13,4 +13,4 @@ Personal Omni Toolbox built in Go
 
 ### Compilation
 
-You can run `make` to compile it. If it didn't work, just use whatever compiler you'd like to use and make sure to leave the binary in the repository root. 
+You can run `make` to compile it. If it didn't work, just use whatever compiler you'd like, compile the `src` directory and leave the output binary file(s) in the repository root (i.e. `src/../`). 
