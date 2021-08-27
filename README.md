@@ -1,7 +1,7 @@
 # Gauk.as
-Personal Omni Toolbox built in Go
+Personal Omni Toolbox built in Go, in order to be utilized from anywhere at anytime by [@Gaukas](https://github.com/Gaukas). 
 
-### Features
+### Supported Use Cases
 
 - [x] URL Redirection
 - [x] Load text file
@@ -10,6 +10,7 @@ Personal Omni Toolbox built in Go
 - [ ] Proxy Server
     - [ ] HTTP/SOCKS Proxy
     - [ ] Reverse Proxy
+- [ ] Service/Website/Server Status Monitor
 
 ### Compilation
 
