@@ -5,7 +5,7 @@ Personal Omni Toolbox built in Go, in order to be utilized from anywhere at anyt
 
 - [x] URL Redirection
 - [x] Load text file
-- [ ] Popular Hash Calculator
+- [x] Popular Hash Calculator
 - [ ] PGP cryptography
 - [ ] Proxy Server
     - [ ] HTTP/SOCKS Proxy
