@@ -48,8 +48,10 @@ func setRoute(router *gin.Engine) {
 
 		if redirectUrl, ok := Redirect(name); ok {
 			c.Redirect(http.StatusMovedPermanently, redirectUrl)
-		} else if responseFilepath, ok := LoadTXTFile(name); ok {
-			c.File(responseFilepath)
+			// } else if responseFilepath, ok := LoadTXTFile(name); ok {
+			// 	c.File(responseFilepath)
+		} else if responseTxt, ok := LoadTXTFile(name); ok {
+			c.String(http.StatusOK, responseTxt)
 		} else {
 			badRequest(c)
 		}
