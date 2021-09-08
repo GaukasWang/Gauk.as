@@ -14,16 +14,21 @@ var (
 		"linkedin": "https://www.linkedin.com/in/gaukaswang/",
 
 		// Keys
-		"gpg":         "https://gauk.as/pgp",
-		"keys":        "https://gauk.as/ssh",
-		"ssh-ed25519": "https://gauk.as/ssh",
-		"ssh-key":     "https://gauk.as/ssh",
-		"ssh-keys":    "https://gauk.as/ssh",
+		"key":         "https://gauk.as/keys",
+		"pgp":         "https://gauk.as/gpg", // by default, all keys
+		"ssh":         "https://gauk.as/keys",
+		"ssh-ed25519": "https://gauk.as/keys",
+		"ssh-key":     "https://gauk.as/keys",
+		"ssh-keys":    "https://gauk.as/keys",
 	}
 
 	// All paths are relative to res folder. e.g. public-keys/ssh.key matches <repository>/res/public-keys/ssh.key
 	urlFilepathMap = map[string]string{
-		"pgp": `public-keys/gaukas-pgp-i_at_gaukasdotwang.key`,
-		"ssh": `public-keys/gaukas-ssh-ed25519.key`,
+		"gpg":         `public-keys/i_at_gaukasdotwang.gpg.key`, // all keys
+		"gpg.sign":    `public-keys/i_at_gaukasdotwang_sign_cert_auth.gpg.key`,
+		"gpg.cert":    `public-keys/i_at_gaukasdotwang_sign_cert_auth.gpg.key`,
+		"gpg.auth":    `public-keys/i_at_gaukasdotwang_sign_cert_auth.gpg.key`,
+		"gpg.encrypt": `public-keys/i_at_gaukasdotwang_encrypt.gpg.key`,
+		"keys":        `public-keys/gaukas.ssh-ed25519.key`,
 	}
 )

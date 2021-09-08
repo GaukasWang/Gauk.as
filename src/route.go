@@ -13,6 +13,10 @@ func badRequest(c *gin.Context) {
 }
 
 func setRoute(router *gin.Engine) {
+	// Serve Static Files
+	router.Static("/assets", "./res/assets")
+	router.StaticFile("/favicon.ico", "./res/assets/favicon.ico") // Emoji for cocktail (GIN)
+
 	// Query string parameters are parsed using the existing underlying request object.
 	// The request responds to a url matching:  /welcome?firstname=Jane&lastname=Doe
 	router.GET("/", func(c *gin.Context) {
