@@ -50,11 +50,11 @@ func setRoute(router *gin.Engine) {
 	router.GET("/:name", func(c *gin.Context) {
 		name := strings.ToLower(c.Param("name"))
 
-		if redirectUrl, ok := Redirect(name); ok {
+		if redirectUrl, ok := urlRedirect(name); ok {
 			c.Redirect(http.StatusMovedPermanently, redirectUrl)
 			// } else if responseFilepath, ok := LoadTXTFile(name); ok {
 			// 	c.File(responseFilepath)
-		} else if responseTxt, ok := LoadTXTFile(name); ok {
+		} else if responseTxt, ok := urlLoadFile(name); ok {
 			c.String(http.StatusOK, responseTxt)
 		} else {
 			badRequest(c)

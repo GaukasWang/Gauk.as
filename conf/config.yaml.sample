@@ -1,0 +1,9 @@
+Database:
+  user: gaukas
+  passwd: 57R0n9PA55W0RD
+  host: localhost
+  port: 3389
+  database: testdb
+  server-CA: /home/gaukas/cert/ca-cert.pem
+  client-key: /home/gaukas/cert/gaukas-key.pem
+  client-cert: /home/gaukas/cert/gaukas-cert.pem

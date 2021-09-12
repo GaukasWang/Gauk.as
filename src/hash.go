@@ -16,7 +16,7 @@ var (
 type HashResult struct {
 	status string
 	hash   string
-	err    error `json:",omitempty"`
+	err    error
 }
 
 func (hr HashResult) String() string {
