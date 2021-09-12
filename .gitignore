@@ -15,4 +15,5 @@
 # vendor/
 conf/config.yaml
 
+# The result binary
 gauk.as
