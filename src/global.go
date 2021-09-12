@@ -15,11 +15,11 @@ const (
 
 var (
 	globalConf config = config{
-		web: webserverConf{
-			port:    DEFAULT_PORT,
-			release: false,
+		Web: webserverConf{
+			Port:    DEFAULT_PORT,
+			Release: false,
 		},
-		mysql: dbConf{},
+		Mysql: dbConf{},
 	}
 
 	useMysql bool = false

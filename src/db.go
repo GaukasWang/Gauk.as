@@ -29,24 +29,24 @@ func dbIsConnected(db *sql.DB) (bool, error) {
 func connectDB(sconf dbConf) (*sql.DB, error) {
 	driverName := "mysql"
 	// dsn = fmt.Sprintf("user:password@tcp(localhost:5555)/dbname?tls=skip-verify&autocommit=true")
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?loc=Local", sconf.user, sconf.passwd, sconf.host, sconf.port, sconf.database)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?loc=Local", sconf.User, sconf.Passwd, sconf.Host, sconf.Port, sconf.Database)
 	if mysqlAutoCommit {
 		dsn += "&autocommit=true"
 	}
-	if sconf.serverCAPath != "" {
+	if sconf.ServerCAPath != "" {
 		dsn += "&tls=custom"
 		rootCertPool := x509.NewCertPool()
-		pem, err := ioutil.ReadFile(sconf.serverCAPath)
+		pem, err := ioutil.ReadFile(sconf.ServerCAPath)
 		if err != nil {
 			return nil, err
 		}
 		if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
 			return nil, errBadDbConf
 		}
-		if sconf.clientKeyPath != "" && sconf.clientCertPath != "" {
+		if sconf.ClientKeyPath != "" && sconf.ClientCertPath != "" {
 			// Both Key and Cert are set. Go with customer cert.
 			clientCert := make([]tls.Certificate, 0, 1)
-			certs, err := tls.LoadX509KeyPair(sconf.clientCertPath, sconf.clientKeyPath)
+			certs, err := tls.LoadX509KeyPair(sconf.ClientCertPath, sconf.ClientKeyPath)
 			if err != nil {
 				return nil, err
 			}
@@ -56,7 +56,7 @@ func connectDB(sconf dbConf) (*sql.DB, error) {
 				RootCAs:      rootCertPool,
 				Certificates: clientCert,
 			})
-		} else if sconf.clientKeyPath == "" && sconf.clientCertPath == "" {
+		} else if sconf.ClientKeyPath == "" && sconf.ClientCertPath == "" {
 			// Neither Key or Cert is set. Proceed without customer cert.
 			mysql.RegisterTLSConfig("custom", &tls.Config{
 				// ServerName: "example.com",

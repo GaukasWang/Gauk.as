@@ -1,14 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 
 	"gopkg.in/yaml.v2"
 )
 
+var testConf = `
+web:
+    port: 7001
+    GIN-release: false
+mysql:
+    user: gaukas
+    passwd: 8uS@mEpret?h
+    host: localhost
+`
+
 type config struct {
-	web   webserverConf `yaml:"Webserver"`
-	mysql dbConf        `yaml:"Database"`
+	Web   webserverConf // `yaml:"webserver"`
+	Mysql dbConf        // `yaml:"database"`
 }
 
 func loadConf(filepath string, conf interface{}) error {
@@ -17,22 +28,25 @@ func loadConf(filepath string, conf interface{}) error {
 		return err
 	}
 	err = yaml.Unmarshal(content, conf)
+	if err != nil {
+		fmt.Printf("err: %s", err)
+	}
 	return err
 }
 
 type webserverConf struct {
-	port    uint16 `yaml:"port"`
-	release bool   `yaml:"GIN-release"`
+	Port    uint16 `yaml:"port"`
+	Release bool   `yaml:"GIN-release"`
 }
 
 // Only for MySQL
 type dbConf struct {
-	user           string `yaml:"user"`
-	passwd         string `yaml:"passwd"`
-	host           string `yaml:"host"`
-	port           uint16 `yaml:"port"`
-	database       string `yaml:"database"`
-	serverCAPath   string `yaml:"server-CA"`
-	clientKeyPath  string `yaml:"client-key"`
-	clientCertPath string `yaml:"client-cert"`
+	User           string `yaml:"user"`
+	Passwd         string `yaml:"passwd"`
+	Host           string `yaml:"host"`
+	Port           uint16 `yaml:"port"`
+	Database       string `yaml:"database"`
+	ServerCAPath   string `yaml:"server-CA"`
+	ClientKeyPath  string `yaml:"client-key"`
+	ClientCertPath string `yaml:"client-cert"`
 }

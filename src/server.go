@@ -9,8 +9,8 @@ import (
 func globalInit() {
 	loadConf("./conf/config.yaml", &globalConf)
 
-	if globalConf.mysql.host != "" {
-		_, err := connectDB(globalConf.mysql)
+	if globalConf.Mysql.Host != "" {
+		_, err := connectDB(globalConf.Mysql)
 		if err == nil {
 			useMysql = true
 		}
@@ -28,9 +28,9 @@ func main() {
 
 	setRoute(router)
 	fmt.Printf("Use MySQL: %t\n", useMysql)
-	if globalConf.web.release {
+	if globalConf.Web.Release {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	router.Run(fmt.Sprintf(":%d", globalConf.web.port))
+	router.Run(fmt.Sprintf(":%d", globalConf.Web.Port))
 }
