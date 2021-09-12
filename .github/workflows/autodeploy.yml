@@ -25,10 +25,10 @@ jobs:
         go-version: 1.17
 
     - name: Build
-      run: go build -v ./...
+      run: go build -v ./src
 
     - name: Test
-      run: go test -v ./...
+      run: go test -v ./src
 
   deploy:
     runs-on: ubuntu-latest
@@ -41,6 +41,6 @@ jobs:
         host: ${{ secrets.DEPLOY_TO }}
         username: gaukas
         key: ${{ secrets.DEPLOYER_PRIVKEY }}
-        port: 22
+        port: ${{ secrets.DEPLOY_PORT }}
         script: |
           cd ~/sites/gauk_as/Gauk.as && make
