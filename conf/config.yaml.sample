@@ -1,9 +1,13 @@
-Database:
+web:
+  port: 7001
+  gin-release: false
+mysql:
   user: gaukas
   passwd: 57R0n9PA55W0RD
   host: localhost
   port: 3306
   database: testdb
-  server-CA: /home/gaukas/cert/ca-cert.pem
+  server-ca: /home/gaukas/cert/ca-cert.pem
   client-key: /home/gaukas/cert/gaukas-key.pem
   client-cert: /home/gaukas/cert/gaukas-cert.pem
+  

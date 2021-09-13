@@ -22,15 +22,16 @@ func globalInit() {
 }
 
 func main() {
-	router := gin.Default()
-
 	globalInit()
 
-	setRoute(router)
 	fmt.Printf("Use MySQL: %t\n", useMysql)
 	if globalConf.Web.Release {
 		gin.SetMode(gin.ReleaseMode)
+		fmt.Printf("Set Production: %t\n", globalConf.Web.Release)
 	}
+
+	router := gin.Default()
+	setRoute(router)
 
 	router.Run(fmt.Sprintf(":%d", globalConf.Web.Port))
 }

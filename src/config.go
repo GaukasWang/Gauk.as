@@ -29,14 +29,20 @@ func loadConf(filepath string, conf interface{}) error {
 	}
 	err = yaml.Unmarshal(content, conf)
 	if err != nil {
-		fmt.Printf("err: %s", err)
+		fmt.Printf("loadConf err: %s\n", err)
 	}
+
+	str, err := yaml.Marshal(conf)
+	if err == nil {
+		fmt.Printf("loadConf loaded:\n%s\n", str)
+	}
+
 	return err
 }
 
 type webserverConf struct {
 	Port    uint16 `yaml:"port"`
-	Release bool   `yaml:"GIN-release"`
+	Release bool   `yaml:"gin-release"`
 }
 
 // Only for MySQL
@@ -46,7 +52,7 @@ type dbConf struct {
 	Host           string `yaml:"host"`
 	Port           uint16 `yaml:"port"`
 	Database       string `yaml:"database"`
-	ServerCAPath   string `yaml:"server-CA"`
+	ServerCAPath   string `yaml:"server-ca"`
 	ClientKeyPath  string `yaml:"client-key"`
 	ClientCertPath string `yaml:"client-cert"`
 }
