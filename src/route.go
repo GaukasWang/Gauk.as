@@ -54,8 +54,10 @@ func setRoute(router *gin.Engine) {
 			c.Redirect(http.StatusMovedPermanently, redirectUrl)
 			// } else if responseFilepath, ok := LoadTXTFile(name); ok {
 			// 	c.File(responseFilepath)
-		} else if responseTxt, ok := urlLoadFile(name); ok {
-			c.String(http.StatusOK, responseTxt)
+			// } else if responseTxt, ok := urlLoadFile(name); ok {
+		} else if filepath, ok := urlLoadFilepath(name); ok {
+			// c.String(http.StatusOK, responseTxt)
+			router.StaticFile(name, filepath)
 		} else {
 			badRequest(c)
 		}

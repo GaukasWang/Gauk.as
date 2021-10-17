@@ -21,8 +21,8 @@ var (
 		"telegram": "https://t.me/GaukasWang",
 
 		// Career
-		"cv":       "https://gaukas.wang/latest/cv.pdf",
-		"resume":   "https://gaukas.wang/latest/resume.pdf",
+		// "cv":       "https://gaukas.wang/latest/cv.pdf",
+		// "resume":   "https://gaukas.wang/latest/resume.pdf",
 		"linkedin": "https://www.linkedin.com/in/gaukaswang/",
 
 		// Keys
@@ -43,6 +43,9 @@ var (
 	urlFilepathMap = map[string]string{
 		"gpg":  `public-keys/i_at_gaukasdotwang.gpg.key`, // all keys
 		"keys": `public-keys/gaukas.ssh-ed25519.key`,
+
+		"cv":     `documents/cv.pdf`,
+		"resume": `documents/resume.pdf`,
 	}
 	urlFilepathOverrideMap = map[string]string{}
 )
@@ -110,6 +113,16 @@ func urlLoadFile(name string) (string, bool) {
 			return "", false
 		}
 		return string(content), true
+		// return filepath, true
+	}
+	return "", false
+}
+
+func urlLoadFilepath(name string) (string, bool) {
+	urlMappingMutex.RLock()
+	defer urlMappingMutex.RUnlock()
+	if responsePath, ok := urlFilepathMap[name]; ok {
+		return "./res/" + responsePath, true
 		// return filepath, true
 	}
 	return "", false
