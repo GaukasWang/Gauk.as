@@ -43,11 +43,11 @@ var (
 	urlFilepathMap = map[string]string{
 		"gpg":  `public-keys/i_at_gaukasdotwang.gpg.key`, // all keys
 		"keys": `public-keys/gaukas.ssh-ed25519.key`,
-
+	}
+	urlFilepathOverrideMap = map[string]string{
 		"cv":     `documents/cv.pdf`,
 		"resume": `documents/resume.pdf`,
 	}
-	urlFilepathOverrideMap = map[string]string{}
 )
 
 func initUrlMapping() error {
@@ -118,12 +118,12 @@ func urlLoadFile(name string) (string, bool) {
 	return "", false
 }
 
-func urlLoadFilepath(name string) (string, bool) {
-	urlMappingMutex.RLock()
-	defer urlMappingMutex.RUnlock()
-	if responsePath, ok := urlFilepathMap[name]; ok {
-		return "./res/" + responsePath, true
-		// return filepath, true
-	}
-	return "", false
-}
+// func urlFilepathOverride(name string) (string, bool) {
+// 	urlMappingMutex.RLock()
+// 	defer urlMappingMutex.RUnlock()
+// 	if responsePath, ok := urlFilepathOverrideMap[name]; ok {
+// 		return "./res/" + responsePath, true
+// 		// return filepath, true
+// 	}
+// 	return "", false
+// }
