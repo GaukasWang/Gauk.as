@@ -31,7 +31,6 @@ jobs:
       run: go test -v ./src
 
   deploy:
-    if: ${{ github.ref == 'main' }}
     needs: build
     runs-on: ubuntu-latest
     steps:
