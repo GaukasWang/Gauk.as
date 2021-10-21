@@ -36,6 +36,10 @@ var (
 		"ssh-ed25519": "https://gauk.as/keys",
 		"ssh-key":     "https://gauk.as/keys",
 		"ssh-keys":    "https://gauk.as/keys",
+
+		// // These 2 look like infinite redirection, but they aren't. All-lowercase routes has a higher priority to be Overridden.
+		// "cv":     `https://gauk.as/cv`,
+		// "resume": `https://gauk.as/resume`,
 	}
 	urlRedirectOverrideMap = map[string]string{}
 
@@ -81,8 +85,8 @@ func reloadUrlMapping() error {
 	for key, val := range urlRedirectOverrideMap {
 		urlRedirectMap[key] = val
 	}
-	for key, val := range urlFilepathOverrideMap {
-		urlRedirectMap[key] = val
+	for key, _ := range urlFilepathOverrideMap {
+		urlRedirectMap[key] = key // not typo.
 	}
 
 	return nil
