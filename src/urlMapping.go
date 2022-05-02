@@ -37,9 +37,8 @@ var (
 		"ssh-key":     "https://gauk.as/keys",
 		"ssh-keys":    "https://gauk.as/keys",
 
-		// // These 2 look like infinite redirection, but they aren't. All-lowercase routes has a higher priority to be Overridden.
-		// "cv":     `https://gauk.as/cv`,
-		// "resume": `https://gauk.as/resume`,
+		"cv":     `https://gaukas.wang/documents/cv.pdf`,
+		"resume": `https://gaukas.wang/documents/resume.pdf`,
 	}
 	urlRedirectOverrideMap = map[string]string{}
 
@@ -49,8 +48,8 @@ var (
 		"keys": `public-keys/gaukas.ssh-ed25519.key`,
 	}
 	urlFilepathOverrideMap = map[string]string{
-		"cv":     `documents/cv.pdf`,
-		"resume": `documents/resume.pdf`,
+		// "cv":     `documents/cv.pdf`,
+		// "resume": `documents/resume.pdf`,
 	}
 )
 
